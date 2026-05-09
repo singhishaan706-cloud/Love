@@ -2,98 +2,109 @@
 <style>
   @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
   @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes confetti { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(60px) rotate(360deg); opacity: 0; } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes confetti { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(50px) rotate(360deg); opacity: 0; } }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body, html { width: 100%; }
+
   .lock-screen {
-    min-height: 600px; display: flex; flex-direction: column; align-items: center;
-    justify-content: center; background: linear-gradient(135deg, #fff0f5, #ffe4f0, #fff8fb);
-    padding: 2rem; font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #fff0f5, #ffe4f0, #fff8fb);
+    padding: 2rem 1.2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  .lock-icon { font-size: 48px; animation: float 3s ease-in-out infinite; margin-bottom: 1rem; }
-  .lock-title { font-size: 22px; font-weight: 500; color: #c0406a; margin-bottom: 0.4rem; }
-  .lock-sub { font-size: 14px; color: #d472a0; margin-bottom: 1.5rem; }
+  .lock-icon { font-size: 52px; animation: float 3s ease-in-out infinite; margin-bottom: 1rem; }
+  .lock-title { font-size: 20px; font-weight: 600; color: #c0406a; margin-bottom: 0.4rem; text-align: center; }
+  .lock-sub { font-size: 13px; color: #d472a0; margin-bottom: 1.8rem; text-align: center; }
   .lock-input {
-    border: 2px solid #f0a0c0; border-radius: 16px; padding: 12px 20px;
-    font-size: 18px; letter-spacing: 8px; text-align: center; width: 180px;
+    border: 2px solid #f0a0c0; border-radius: 16px; padding: 14px 20px;
+    font-size: 22px; letter-spacing: 10px; text-align: center; width: 100%; max-width: 220px;
     background: white; color: #c0406a; outline: none; margin-bottom: 1rem;
   }
   .lock-input:focus { border-color: #e05088; }
   .lock-btn {
     background: #e05088; color: white; border: none; border-radius: 50px;
-    padding: 10px 28px; font-size: 15px; cursor: pointer; transition: transform 0.15s;
+    padding: 13px 36px; font-size: 16px; cursor: pointer; transition: transform 0.15s; width: 100%; max-width: 220px;
   }
-  .lock-btn:hover { transform: scale(1.05); background: #c0406a; }
-  .lock-error { color: #e05088; font-size: 13px; margin-top: 0.5rem; min-height: 18px; }
+  .lock-btn:active { transform: scale(0.97); }
+  .lock-error { color: #e05088; font-size: 13px; margin-top: 0.6rem; min-height: 18px; text-align: center; }
 
   .main-page {
-    display: none; font-family: var(--font-sans);
+    display: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: linear-gradient(160deg, #fff0f8, #fff8fb, #fff0f5);
-    min-height: 600px; padding: 2rem 1.5rem;
+    min-height: 100vh;
+    padding: 1.2rem 1rem 2rem;
   }
-  .hero { text-align: center; padding: 2rem 0 1.5rem; animation: fadeIn 0.8s ease; }
-  .big-heart { font-size: 52px; animation: heartbeat 2s ease-in-out infinite; display: inline-block; margin-bottom: 0.5rem; }
-  .hero-name { font-size: 32px; font-weight: 500; color: #c0406a; margin-bottom: 0.3rem; }
-  .hero-tagline { font-size: 15px; color: #d472a0; font-style: italic; }
+
+  .floating-hearts { position: relative; height: 36px; overflow: hidden; margin-bottom: 0.5rem; }
+  .fh { position: absolute; font-size: 16px; animation: confetti 3s ease-in infinite; }
+
+  .hero { text-align: center; padding: 1.2rem 0 1rem; animation: fadeIn 0.8s ease; }
+  .big-heart { font-size: 48px; animation: heartbeat 2s ease-in-out infinite; display: inline-block; margin-bottom: 0.4rem; }
+  .hero-name { font-size: 26px; font-weight: 600; color: #c0406a; margin-bottom: 0.3rem; }
+  .hero-tagline { font-size: 13px; color: #d472a0; font-style: italic; }
+
+  .sparkle-row { text-align: center; font-size: 18px; margin: 0.8rem 0 1rem; letter-spacing: 6px; }
 
   .section {
-    background: white; border-radius: 20px; padding: 1.4rem 1.5rem;
-    margin-bottom: 1.2rem; border: 1.5px solid #ffd6e8; animation: fadeIn 0.8s ease;
+    background: white; border-radius: 18px; padding: 1.2rem 1rem;
+    margin-bottom: 1rem; border: 1.5px solid #ffd6e8; animation: fadeIn 0.8s ease;
   }
   .section-title {
-    font-size: 13px; font-weight: 500; color: #e05088; letter-spacing: 1px;
-    text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; color: #e05088; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 0.9rem;
   }
-  .things-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .thing-card {
-    background: #fff0f6; border-radius: 14px; padding: 0.9rem 1rem;
-    font-size: 14px; color: #a0305a; border: 1px solid #ffc0d8;
-    text-align: center; cursor: default; transition: transform 0.2s;
-  }
-  .thing-card:hover { transform: scale(1.04); }
-  .thing-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
 
-  .memory-list { display: flex; flex-direction: column; gap: 12px; }
+  .things-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .thing-card {
+    background: #fff0f6; border-radius: 12px; padding: 0.8rem 0.7rem;
+    font-size: 12px; color: #a0305a; border: 1px solid #ffc0d8;
+    text-align: center; transition: transform 0.2s;
+  }
+  .thing-card:active { transform: scale(0.97); }
+  .thing-emoji { font-size: 20px; display: block; margin-bottom: 4px; }
+
+  .memory-list { display: flex; flex-direction: column; gap: 10px; }
   .memory-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: #fff5fa; border-radius: 14px; padding: 0.9rem 1rem; border: 1px solid #ffd6e8;
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fff5fa; border-radius: 12px; padding: 0.8rem 0.9rem; border: 1px solid #ffd6e8;
   }
   .memory-dot {
-    min-width: 32px; height: 32px; border-radius: 50%; background: #f9a0c4;
-    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    min-width: 30px; height: 30px; border-radius: 50%; background: #f9a0c4;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
   }
-  .memory-text { font-size: 14px; color: #903058; line-height: 1.5; }
+  .memory-text { font-size: 13px; color: #903058; line-height: 1.5; }
 
   .letter-box {
-    background: #fff5fa; border-radius: 16px; padding: 1.2rem 1.4rem;
-    border: 1.5px dashed #f0a0c0; font-size: 15px; color: #7a2045;
-    line-height: 1.9; font-style: italic;
+    background: #fff5fa; border-radius: 14px; padding: 1.1rem 1rem;
+    border: 1.5px dashed #f0a0c0; font-size: 14px; color: #7a2045; line-height: 1.9; font-style: italic;
   }
-  .letter-sig { margin-top: 1rem; font-style: normal; font-weight: 500; color: #c0406a; text-align: right; }
+  .letter-sig { margin-top: 0.9rem; font-style: normal; font-weight: 600; color: #c0406a; text-align: right; }
 
-  .floating-hearts { position: relative; height: 40px; overflow: hidden; margin-bottom: 0.5rem; }
-  .fh { position: absolute; font-size: 18px; animation: confetti 3s ease-in infinite; }
-  .sparkle-row { text-align: center; font-size: 20px; margin: 0.5rem 0 1.5rem; letter-spacing: 8px; }
+  .footer { text-align: center; padding: 1rem 0 0.5rem; font-size: 12px; color: #d480a8; }
 </style>
 
 <div class="lock-screen" id="lockScreen">
   <div class="lock-icon">🔐</div>
   <div class="lock-title">Sirf aapke liye 💕</div>
   <div class="lock-sub">Enter the secret password, Kit-Kat!</div>
-  <input class="lock-input" type="password" id="pwInput" maxlength="4" placeholder="••••" />
+  <input class="lock-input" type="password" id="pwInput" maxlength="4" placeholder="••••" inputmode="numeric" />
   <button class="lock-btn" onclick="checkPass()">Open 🌸</button>
   <div class="lock-error" id="pwError"></div>
 </div>
 
 <div class="main-page" id="mainPage">
   <div class="floating-hearts" aria-hidden="true">
-    <span class="fh" style="left:8%;animation-delay:0s">💕</span>
-    <span class="fh" style="left:22%;animation-delay:0.5s">🌸</span>
+    <span class="fh" style="left:5%;animation-delay:0s">💕</span>
+    <span class="fh" style="left:20%;animation-delay:0.5s">🌸</span>
     <span class="fh" style="left:40%;animation-delay:1s">💖</span>
     <span class="fh" style="left:60%;animation-delay:0.3s">✨</span>
     <span class="fh" style="left:78%;animation-delay:0.8s">💕</span>
-    <span class="fh" style="left:90%;animation-delay:1.4s">🌷</span>
+    <span class="fh" style="left:92%;animation-delay:1.4s">🌷</span>
   </div>
 
   <div class="hero">
@@ -102,7 +113,7 @@
     <div class="hero-tagline">Ishu ne yeh sirf aapke liye banaya hai 🌸</div>
   </div>
 
-  <div class="sparkle-row" aria-hidden="true">✨ 🌸 ✨</div>
+  <div class="sparkle-row">✨ 🌸 ✨</div>
 
   <div class="section">
     <div class="section-title">💛 Jo cheezein mujhe aapke baare mein pasand hain</div>
@@ -110,7 +121,7 @@
       <div class="thing-card"><span class="thing-emoji">😄</span>Aapki hassi — jo sab kuch theek kar deti hai</div>
       <div class="thing-card"><span class="thing-emoji">💬</span>Aapka andaaz baatein karne ka — ekdum unique</div>
       <div class="thing-card"><span class="thing-emoji">🌟</span>Aapki caring nature — jo dil chhu leti hai</div>
-      <div class="thing-card"><span class="thing-emoji">🦋</span>Aapka honestly rakhna apne aap ko — it's rare</div>
+      <div class="thing-card"><span class="thing-emoji">🦋</span>Apne aap ko honestly rakhna — it's rare</div>
     </div>
   </div>
 
@@ -123,7 +134,7 @@
       </div>
       <div class="memory-item">
         <div class="memory-dot">🎂</div>
-        <div class="memory-text">Jab aap mere birthday pe mere ghar aayi thi pehli baar — uss din bahut special tha. Seriously, wo moment yaad rakhne wala hai.</div>
+        <div class="memory-text">Jab aap mere birthday pe mere ghar aayi thi pehli baar — uss din bahut special tha. Wo moment yaad rakhne wala hai.</div>
       </div>
       <div class="memory-item">
         <div class="memory-dot">💄</div>
@@ -146,9 +157,7 @@
     </div>
   </div>
 
-  <div style="text-align:center; padding: 1rem 0 0.5rem; font-size:13px; color:#d480a8;">
-    Made with 💖 by Ishu, sirf Kit-Kat ke liye
-  </div>
+  <div class="footer">Made with 💖 by Ishu, sirf Kit-Kat ke liye</div>
 </div>
 
 <script>
