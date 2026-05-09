@@ -1,179 +1,487 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kit-Kat 💖</title>
 
-<style>
-  @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-  @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes confetti { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(50px) rotate(360deg); opacity: 0; } }
+  <style>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
 
-  body, html { width: 100%; }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
 
-  .lock-screen {
-    min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #fff0f5, #ffe4f0, #fff8fb);
-    padding: 2rem 1.2rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  .lock-icon { font-size: 52px; animation: float 3s ease-in-out infinite; margin-bottom: 1rem; }
-  .lock-title { font-size: 20px; font-weight: 600; color: #c0406a; margin-bottom: 0.4rem; text-align: center; }
-  .lock-sub { font-size: 13px; color: #d472a0; margin-bottom: 1.8rem; text-align: center; }
-  .lock-input {
-    border: 2px solid #f0a0c0; border-radius: 16px; padding: 14px 20px;
-    font-size: 22px; letter-spacing: 10px; text-align: center; width: 100%; max-width: 220px;
-    background: white; color: #c0406a; outline: none; margin-bottom: 1rem;
-  }
-  .lock-input:focus { border-color: #e05088; }
-  .lock-btn {
-    background: #e05088; color: white; border: none; border-radius: 50px;
-    padding: 13px 36px; font-size: 16px; cursor: pointer; transition: transform 0.15s; width: 100%; max-width: 220px;
-  }
-  .lock-btn:active { transform: scale(0.97); }
-  .lock-error { color: #e05088; font-size: 13px; margin-top: 0.6rem; min-height: 18px; text-align: center; }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  .main-page {
-    display: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(160deg, #fff0f8, #fff8fb, #fff0f5);
-    min-height: 100vh;
-    padding: 1.2rem 1rem 2rem;
-  }
+    @keyframes confetti {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(60px) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
-  .floating-hearts { position: relative; height: 36px; overflow: hidden; margin-bottom: 0.5rem; }
-  .fh { position: absolute; font-size: 16px; animation: confetti 3s ease-in infinite; }
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-  .hero { text-align: center; padding: 1.2rem 0 1rem; animation: fadeIn 0.8s ease; }
-  .big-heart { font-size: 48px; animation: heartbeat 2s ease-in-out infinite; display: inline-block; margin-bottom: 0.4rem; }
-  .hero-name { font-size: 26px; font-weight: 600; color: #c0406a; margin-bottom: 0.3rem; }
-  .hero-tagline { font-size: 13px; color: #d472a0; font-style: italic; }
+    body{
+      font-family: sans-serif;
+      width:100%;
+      overflow-x:hidden;
+      background:#fff5fa;
+    }
 
-  .sparkle-row { text-align: center; font-size: 18px; margin: 0.8rem 0 1rem; letter-spacing: 6px; }
+    .lock-screen{
+      min-height:100vh;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:2rem 1rem;
+      background:linear-gradient(135deg,#fff0f5,#ffe4f0,#fff8fb);
+      text-align:center;
+    }
 
-  .section {
-    background: white; border-radius: 18px; padding: 1.2rem 1rem;
-    margin-bottom: 1rem; border: 1.5px solid #ffd6e8; animation: fadeIn 0.8s ease;
-  }
-  .section-title {
-    font-size: 11px; font-weight: 600; color: #e05088; letter-spacing: 1px;
-    text-transform: uppercase; margin-bottom: 0.9rem;
-  }
+    .lock-icon{
+      font-size:50px;
+      animation:float 3s ease-in-out infinite;
+      margin-bottom:1rem;
+    }
 
-  .things-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .thing-card {
-    background: #fff0f6; border-radius: 12px; padding: 0.8rem 0.7rem;
-    font-size: 12px; color: #a0305a; border: 1px solid #ffc0d8;
-    text-align: center; transition: transform 0.2s;
-  }
-  .thing-card:active { transform: scale(0.97); }
-  .thing-emoji { font-size: 20px; display: block; margin-bottom: 4px; }
+    .lock-title{
+      font-size:24px;
+      color:#c0406a;
+      margin-bottom:0.5rem;
+    }
 
-  .memory-list { display: flex; flex-direction: column; gap: 10px; }
-  .memory-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    background: #fff5fa; border-radius: 12px; padding: 0.8rem 0.9rem; border: 1px solid #ffd6e8;
-  }
-  .memory-dot {
-    min-width: 30px; height: 30px; border-radius: 50%; background: #f9a0c4;
-    display: flex; align-items: center; justify-content: center; font-size: 14px;
-  }
-  .memory-text { font-size: 13px; color: #903058; line-height: 1.5; }
+    .lock-sub{
+      color:#d472a0;
+      margin-bottom:1.5rem;
+      font-size:14px;
+    }
 
-  .letter-box {
-    background: #fff5fa; border-radius: 14px; padding: 1.1rem 1rem;
-    border: 1.5px dashed #f0a0c0; font-size: 14px; color: #7a2045; line-height: 1.9; font-style: italic;
-  }
-  .letter-sig { margin-top: 0.9rem; font-style: normal; font-weight: 600; color: #c0406a; text-align: right; }
+    .lock-input{
+      width:160px;
+      padding:12px;
+      border-radius:16px;
+      border:2px solid #f0a0c0;
+      text-align:center;
+      font-size:18px;
+      letter-spacing:6px;
+      outline:none;
+      margin-bottom:1rem;
+    }
 
-  .footer { text-align: center; padding: 1rem 0 0.5rem; font-size: 12px; color: #d480a8; }
-</style>
+    .lock-btn{
+      border:none;
+      background:#e05088;
+      color:white;
+      padding:12px 28px;
+      border-radius:50px;
+      font-size:15px;
+      cursor:pointer;
+    }
+
+    .lock-btn:hover{
+      background:#c0406a;
+    }
+
+    .lock-error{
+      color:#e05088;
+      margin-top:10px;
+      font-size:13px;
+      min-height:18px;
+    }
+
+    .main-page{
+      display:none;
+      width:100%;
+      min-height:100vh;
+      padding:1rem;
+      background:linear-gradient(160deg,#fff0f8,#fff8fb,#fff0f5);
+    }
+
+    .floating-hearts{
+      position:relative;
+      height:40px;
+      overflow:hidden;
+    }
+
+    .fh{
+      position:absolute;
+      font-size:18px;
+      animation:confetti 3s ease-in infinite;
+    }
+
+    .hero{
+      text-align:center;
+      padding:1rem 0 1.5rem;
+      animation:fadeIn .8s ease;
+    }
+
+    .big-heart{
+      font-size:48px;
+      animation:heartbeat 2s ease infinite;
+    }
+
+    .hero-name{
+      font-size:30px;
+      color:#c0406a;
+      margin-top:10px;
+    }
+
+    .hero-tagline{
+      font-size:14px;
+      color:#d472a0;
+      margin-top:6px;
+    }
+
+    .sparkle-row{
+      text-align:center;
+      font-size:20px;
+      margin-bottom:1rem;
+    }
+
+    .section{
+      background:white;
+      border-radius:18px;
+      padding:1rem;
+      margin-bottom:1rem;
+      border:1px solid #ffd6e8;
+      animation:fadeIn .8s ease;
+    }
+
+    .section-title{
+      color:#e05088;
+      font-size:14px;
+      margin-bottom:1rem;
+      font-weight:bold;
+    }
+
+    .things-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .thing-card{
+      background:#fff0f6;
+      border-radius:14px;
+      padding:1rem;
+      border:1px solid #ffc0d8;
+      text-align:center;
+      color:#903058;
+      font-size:14px;
+    }
+
+    .thing-emoji{
+      display:block;
+      font-size:22px;
+      margin-bottom:5px;
+    }
+
+    .memory-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .memory-item{
+      display:flex;
+      gap:10px;
+      background:#fff5fa;
+      border-radius:14px;
+      padding:1rem;
+      border:1px solid #ffd6e8;
+    }
+
+    .memory-dot{
+      min-width:34px;
+      height:34px;
+      border-radius:50%;
+      background:#f9a0c4;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .memory-text{
+      font-size:14px;
+      line-height:1.6;
+      color:#7a2045;
+    }
+
+    .letter-box{
+      background:#fff5fa;
+      border:1px dashed #f0a0c0;
+      border-radius:16px;
+      padding:1rem;
+      line-height:1.8;
+      color:#7a2045;
+      font-size:15px;
+    }
+
+    .letter-sig{
+      margin-top:1rem;
+      text-align:right;
+      color:#c0406a;
+      font-weight:bold;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:1rem;
+      font-size:13px;
+      color:#d480a8;
+    }
+
+    @media(max-width:600px){
+
+      .things-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-name{
+        font-size:25px;
+      }
+
+      .big-heart{
+        font-size:40px;
+      }
+
+      .memory-item{
+        flex-direction:column;
+      }
+
+      .lock-input{
+        width:140px;
+        font-size:16px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
 
 <div class="lock-screen" id="lockScreen">
+
   <div class="lock-icon">🔐</div>
-  <div class="lock-title">Sirf aapke liye 💕</div>
-  <div class="lock-sub">Enter the secret password, Kit-Kat!</div>
-  <input class="lock-input" type="password" id="pwInput" maxlength="4" placeholder="••••" inputmode="numeric" />
-  <button class="lock-btn" onclick="checkPass()">Open 🌸</button>
+
+  <div class="lock-title">
+    Sirf aapke liye 💕
+  </div>
+
+  <div class="lock-sub">
+    Enter the secret password, Kit-Kat!
+  </div>
+
+  <input
+    type="password"
+    id="pwInput"
+    class="lock-input"
+    maxlength="4"
+    placeholder="••••"
+  >
+
+  <button class="lock-btn" onclick="checkPass()">
+    Open 🌸
+  </button>
+
   <div class="lock-error" id="pwError"></div>
+
 </div>
 
+
 <div class="main-page" id="mainPage">
-  <div class="floating-hearts" aria-hidden="true">
-    <span class="fh" style="left:5%;animation-delay:0s">💕</span>
-    <span class="fh" style="left:20%;animation-delay:0.5s">🌸</span>
+
+  <div class="floating-hearts">
+    <span class="fh" style="left:8%;animation-delay:0s">💕</span>
+    <span class="fh" style="left:22%;animation-delay:0.5s">🌸</span>
     <span class="fh" style="left:40%;animation-delay:1s">💖</span>
     <span class="fh" style="left:60%;animation-delay:0.3s">✨</span>
     <span class="fh" style="left:78%;animation-delay:0.8s">💕</span>
-    <span class="fh" style="left:92%;animation-delay:1.4s">🌷</span>
   </div>
 
   <div class="hero">
+
     <div class="big-heart">💖</div>
-    <div class="hero-name">Hey, Kit-Kat! 🍫</div>
-    <div class="hero-tagline">Ishu ne yeh sirf aapke liye banaya hai 🌸</div>
-  </div>
 
-  <div class="sparkle-row">✨ 🌸 ✨</div>
-
-  <div class="section">
-    <div class="section-title">💛 Jo cheezein mujhe aapke baare mein pasand hain</div>
-    <div class="things-grid">
-      <div class="thing-card"><span class="thing-emoji">😄</span>Aapki hassi — jo sab kuch theek kar deti hai</div>
-      <div class="thing-card"><span class="thing-emoji">💬</span>Aapka andaaz baatein karne ka — ekdum unique</div>
-      <div class="thing-card"><span class="thing-emoji">🌟</span>Aapki caring nature — jo dil chhu leti hai</div>
-      <div class="thing-card"><span class="thing-emoji">🦋</span>Apne aap ko honestly rakhna — it's rare</div>
+    <div class="hero-name">
+      Hey, Kit-Kat! 🍫
     </div>
+
+    <div class="hero-tagline">
+      Ishu ne yeh sirf aapke liye banaya hai 🌸
+    </div>
+
+  </div>
+
+  <div class="sparkle-row">
+    ✨ 🌸 ✨
   </div>
 
   <div class="section">
-    <div class="section-title">📸 Hamare pyaare moments</div>
+
+    <div class="section-title">
+      💛 Jo cheezein mujhe aapke baare mein pasand hain
+    </div>
+
+    <div class="things-grid">
+
+      <div class="thing-card">
+        <span class="thing-emoji">😄</span>
+        Aapki hassi — jo sab kuch theek kar deti hai
+      </div>
+
+      <div class="thing-card">
+        <span class="thing-emoji">💬</span>
+        Aapka andaaz baatein karne ka — ekdum unique
+      </div>
+
+      <div class="thing-card">
+        <span class="thing-emoji">🌟</span>
+        Aapki caring nature — jo dil chhu leti hai
+      </div>
+
+      <div class="thing-card">
+        <span class="thing-emoji">🦋</span>
+        Aapka honestly rakhna apne aap ko — it's rare
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-title">
+      📸 Hamare pyaare moments
+    </div>
+
     <div class="memory-list">
+
       <div class="memory-item">
         <div class="memory-dot">📚</div>
-        <div class="memory-text">Jab hum saath padhte the — woh din kitne simple aur khubsoorat the. Aapka saath padhai bhi enjoyable lagti thi!</div>
+        <div class="memory-text">
+          Jab hum saath padhte the — woh din kitne simple aur khubsoorat the.
+        </div>
       </div>
+
       <div class="memory-item">
         <div class="memory-dot">🎂</div>
-        <div class="memory-text">Jab aap mere birthday pe mere ghar aayi thi pehli baar — uss din bahut special tha. Wo moment yaad rakhne wala hai.</div>
+        <div class="memory-text">
+          Jab aap mere birthday pe mere ghar aayi thi pehli baar —
+          woh moment bahut special tha.
+        </div>
       </div>
+
       <div class="memory-item">
         <div class="memory-dot">💄</div>
-        <div class="memory-text">Jab maine aapko pehli baar lip balm gifted kiya tha — woh chota sa gift, lekin uss moment mein bahut kuch tha jo unsaid tha! 🥹</div>
+        <div class="memory-text">
+          Jab maine aapko pehli baar lip balm gifted kiya tha 🥹
+        </div>
       </div>
+
     </div>
+
   </div>
 
   <div class="section">
-    <div class="section-title">💌 Ishu ki taraf se ek baat</div>
-    <div class="letter-box">
-      Kit-Kat,<br><br>
-      Bas ek cheez kehni thi — thank you. Mere bure waqt mein aap thi,
-      aur uss waqt aapka hona bahut matter kiya. Shayad aapko pata bhi nahi
-      kitna farak pada.<br><br>
-      Aur agar kabhi aapko bura lage, kuch bhari lage zindagi —
-      main hamesha hoon. Koi bhi waqt, koi bhi baat.
-      Aapke liye hamesha available hoon. 🌸
-      <div class="letter-sig">— Ishu 💕</div>
+
+    <div class="section-title">
+      💌 Ishu ki taraf se ek baat
     </div>
+
+    <div class="letter-box">
+
+      Kit-Kat,
+      <br><br>
+
+      Bas ek cheez kehni thi — thank you.
+      Mere bure waqt mein aap thi,
+      aur uss waqt aapka hona bahut matter kiya.
+
+      <br><br>
+
+      Aur agar kabhi aapko bura lage,
+      main hamesha hoon 🌸
+
+      <div class="letter-sig">
+        — Ishu 💕
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="footer">Made with 💖 by Ishu, sirf Kit-Kat ke liye</div>
+  <div class="footer">
+    Made with 💖 by Ishu
+  </div>
+
 </div>
 
 <script>
-  function checkPass() {
-    const val = document.getElementById('pwInput').value;
-    const err = document.getElementById('pwError');
-    if (val === '2604') {
-      document.getElementById('lockScreen').style.display = 'none';
-      document.getElementById('mainPage').style.display = 'block';
-    } else {
-      err.textContent = 'Galat password! Dobara try karo 🙈';
-      document.getElementById('pwInput').value = '';
-      setTimeout(() => err.textContent = '', 2000);
-    }
+
+function checkPass(){
+
+  const val = document.getElementById("pwInput").value;
+  const err = document.getElementById("pwError");
+
+  if(val === "2604"){
+
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+
+  } else {
+
+    err.textContent = "Galat password! Dobara try karo 🙈";
+
+    document.getElementById("pwInput").value = "";
+
+    setTimeout(() => {
+      err.textContent = "";
+    },2000);
+
   }
-  document.getElementById('pwInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') checkPass();
-  });
+
+}
+
+document.getElementById("pwInput")
+.addEventListener("keydown",function(e){
+
+  if(e.key === "Enter"){
+    checkPass();
+  }
+
+});
+
 </script>
+
+</body>
+</html>
+```
