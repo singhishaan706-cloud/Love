@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <meta name="description" content="A love story told through the stars">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PASSWORD SCREEN -->
+    <div id="password-screen">
+        <canvas id="password-canvas"></canvas>
+        <div class="password-content">
+            <div class="lock-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <h1 class="password-title">Enter The Code</h1>
+            <p class="password-subtitle">Sirf woh jaane jo jaanne chahiye ❤️</p>
+            <div class="code-input-container">
+                <input type="password" id="code-input-1" class="code-input" maxlength="1" inputmode="numeric" autofocus>
+                <input type="password" id="code-input-2" class="code-input" maxlength="1" inputmode="numeric">
+                <input type="password" id="code-input-3" class="code-input" maxlength="1" inputmode="numeric">
+                <input type="password" id="code-input-4" class="code-input" maxlength="1" inputmode="numeric">
+            </div>
+            <p id="error-msg" class="error-msg"></p>
+            <div class="heartbeat-line">
+                <svg viewBox="0 0 400 60" preserveAspectRatio="none">
+                    <polyline class="heartbeat-path" points="0,30 50,30 70,30 80,10 90,50 100,20 110,40 120,30 170,30 190,30 200,10 210,50 220,20 230,40 240,30 290,30 310,30 320,10 330,50 340,20 350,40 360,30 400,30" fill="none" stroke="url(#heartGrad)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:0"/>
+                            <stop offset="50%" style="stop-color:#ff6b9d;stop-opacity:1"/>
+                            <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:0"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D INTRO CINEMATIC -->
+    <div id="intro-screen" class="hidden">
+        <canvas id="intro-canvas"></canvas>
+        <div id="intro-overlay">
+            <div id="intro-text-1" class="intro-text">✦ Ek Kahani ✦</div>
+            <div id="intro-text-2" class="intro-text">Jo dil se shuru hui...</div>
+            <div id="intro-text-3" class="intro-text">Aur dil mein hi rehti hai</div>
+            <div id="intro-text-4" class="intro-text big-heart">❤️</div>
+            <div id="intro-text-5" class="intro-text title-reveal">Tere Liye</div>
+            <button id="skip-intro" class="skip-btn">Skip Intro →</button>
+        </div>
+    </div>
+
+    <!-- MAIN STORY -->
+    <div id="story-screen" class="hidden">
+        <canvas id="story-canvas"></canvas>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <div class="hero-badge">A Love Story</div>
+                <h1 class="hero-title">
+                    <span class="line-1">Tere Liye</span>
+                    <span class="line-2">❤️</span>
+                </h1>
+                <p class="hero-subtitle">Scroll karke padh meri kahani...</p>
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span>Scroll Down</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 1 -->
+        <section class="chapter" id="ch1">
+            <div class="chapter-number">Chapter 1</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">🏙️</div>
+                <h2 class="chapter-title">Naya Sheher, Nayi Kahani</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Kolkata se Delhi... ek naya sheher, nayi zindagi. Coaching join ki, nayi duniya, naye log... aur tab mujhe nahi pata tha ki meri zindagi badalne wali hai.
+                </p>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section class="chapter" id="ch2">
+            <div class="chapter-number">Chapter 2</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">👀</div>
+                <h2 class="chapter-title">Pehli Mulaqaat</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Tution mein pehli baar dekha tujhe... love at first sight nahi tha, par kuch toh tha jo samajh nahi aa raha tha. 1-1.5 saal saath padhe, hassi-mazaak ki, par tab tak samajh nahi aaya tha yeh feelings kya hain.
+                </p>
+                <div class="chapter-quote">
+                    "Kuch rishte samjhane se nahi, mehsoos karne se bante hain..."
+                </div>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section class="chapter" id="ch3">
+            <div class="chapter-number">Chapter 3</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">💔</div>
+                <h2 class="chapter-title">Ehsaas</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Jab tu tution chhod ke gayi, tab samjha ki tere bina kuch adhura hai. Kuch mahino baad tution bhi band ho gaya... aur mere paas tera koi contact bhi nahi tha. Bas ek khaalipan tha aur teri yaadon ka silsila.
+                </p>
+                <div class="chapter-quote">
+                    "Kabhi kabhi dooriyan bata deti hain ki koi kitna kareeb tha..."
+                </div>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4 -->
+        <section class="chapter" id="ch4">
+            <div class="chapter-number">Chapter 4</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">🔍</div>
+                <h2 class="chapter-title">Dhundhte Dhundhte</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Snapchat install kiya, tution group se tera number save kiya, contacts link kiye... bus ek umeed thi ki tujhse dobara jud jaunga. Pehle Snap mila, phir Instagram... aur aise hi silsila shuru hua dobara.
+                </p>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5 -->
+        <section class="chapter" id="ch5">
+            <div class="chapter-number">Chapter 5</div>
+            <div class="chapter-card special-card">
+                <div class="chapter-icon">🎂</div>
+                <h2 class="chapter-title">Pehla Birthday</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Mere birthday pe tujhe invite kiya. Itne dinon baad tujhe dekhkar mere rongte khade ho gaye... I was amazed seeing you. Hum dono ne bohot enjoy kiya... par woh 1 ghanta bhi 10 minute ke barabar laga.
+                </p>
+                <div class="time-visual">
+                    <div class="time-block">
+                        <span class="time-num">1</span>
+                        <span class="time-label">Ghanta</span>
+                    </div>
+                    <span class="time-equals">=</span>
+                    <div class="time-block">
+                        <span class="time-num">10</span>
+                        <span class="time-label">Minute</span>
+                    </div>
+                </div>
+                <div class="chapter-quote">
+                    "Waqt bhi ruk jaata hai jab tujhe dekhta hoon..."
+                </div>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6 -->
+        <section class="chapter" id="ch6">
+            <div class="chapter-number">Chapter 6</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">🤐</div>
+                <h2 class="chapter-title">Doosra Birthday — Unsaid Words</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Agle saal phir mere birthday pe tujhe bulaya. Iss baar socha tha sab bata dunga... par darr lag raha tha ki kahin dosti na toot jaaye. Ishika se pucha, usne bola mat bata. Maine bhi soch liya... dosti zyada important hai.
+                </p>
+                <div class="chapter-text">
+                    Tu phir aayi, phir hum enjoy kiye... aur phir woh 1 ghanta 10 minute ke barabar laga. Kuch baatein kehne ke liye hoti hain, kuch dil mein rakhne ke liye.
+                </div>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 7 — The Confession -->
+        <section class="chapter confession-chapter" id="ch7">
+            <div class="chapter-number">Chapter 7</div>
+            <div class="chapter-card confession-card">
+                <div class="chapter-icon">💌</div>
+                <h2 class="chapter-title">4 January 2026 — The Confession</h2>
+                <div class="chapter-divider gold"></div>
+                <p class="chapter-text">
+                    New Year mein ghumne nahi mila, ghar pe baithe baithe ek Instagram story daali — "Ask me any question."
+                </p>
+                <div class="confession-highlight">
+                    <div class="message-bubble received">
+                        <p>Who is your crush? 👀</p>
+                    </div>
+                </div>
+                <p class="chapter-text">
+                    Main chahta toh baat ghuma sakta tha... par socha, <em>kb tak?</em>
+                </p>
+                <div class="timestamp-reveal">
+                    <div class="timestamp-date">4th January 2026</div>
+                    <div class="timestamp-time">11:58 PM</div>
+                </div>
+                <div class="confession-highlight">
+                    <div class="message-bubble sent">
+                        <p>Tu hai... ❤️</p>
+                    </div>
+                </div>
+                <p class="chapter-text confession-reaction">
+                    Tera reaction tha — <span class="highlight">"koi nhi"</span>
+                </p>
+                <p class="chapter-text small-text">
+                    Maine socha... isse accha toh nahi bol deti. Darr bhi laga ki block toh nahi karegi... par nahi kiya. ✨
+                </p>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 8 — The Lip Balm -->
+        <section class="chapter" id="ch8">
+            <div class="chapter-number">Chapter 8</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">💄</div>
+                <h2 class="chapter-title">The Lip Balm Story</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text">
+                    Tune ek lip balm ki reel bheji, maine flow mein bol diya — <span class="highlight">"Done."</span>
+                </p>
+                <p class="chapter-text">
+                    Par paise toh mere paas the nahi 😅 Behen se bola — "Raksha Bandhan pe tujhe 300 ka gift diya tha, toh mujhe 150 ka lip balm de de."
+                </p>
+                <p class="chapter-text">
+                    Chup-chupake tere ghar dene gaya, socha iss bahane tujhse mil lunga... par tune apna chota bhai bhej diya lip balm lene. 💔
+                </p>
+                <p class="chapter-text">
+                    Bura laga... par phir yahi socha —
+                </p>
+                <div class="chapter-quote special-quote">
+                    "Tere tak pohoch toh gaya na... aur bas yahi kaafi hai."
+                </div>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 9 — Efforts -->
+        <section class="chapter" id="ch9">
+            <div class="chapter-number">Chapter 9</div>
+            <div class="chapter-card">
+                <div class="chapter-icon">✨</div>
+                <h2 class="chapter-title">Tu Bolti Hai...</h2>
+                <div class="chapter-divider"></div>
+                <div class="confession-highlight">
+                    <div class="message-bubble received">
+                        <p>"Mere liye itne efforts mat daal..."</p>
+                    </div>
+                </div>
+                <p class="chapter-text" style="margin-top: 2rem;">
+                    Par mein kya karun? Dil nahi maanta. Thoda flirt kar leta hoon, thoda hasaa leta hoon... kyunki tere saath baat karna hi mere din ka sabse accha hissa hai.
+                </p>
+                <div class="chapter-decoration">
+                    <span>✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Section -->
+        <section class="final-section" id="finale">
+            <div class="final-content">
+                <div class="final-hearts" id="final-hearts"></div>
+                <h2 class="final-title">Tere Liye...</h2>
+                <div class="final-divider"></div>
+                <p class="final-text">
+                    Yeh website bhi tere liye banayi hai...
+                </p>
+                <p class="final-text">
+                    Kyunki tu mere liye bahut khaas hai.
+                </p>
+                <p class="final-text">
+                    Tu bolti hai efforts mat daal...
+                </p>
+                <p class="final-text highlight-text">
+                    Par tere liye toh kuch bhi kam hai ❤️
+                </p>
+                <div class="final-signature">
+                    <span class="sig-dash">—</span>
+                    <span class="sig-text">Forever Yours</span>
+                </div>
+                <div class="floating-hearts-container" id="floating-final"></div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="chapter" id="gallery">
+            <div class="chapter-number">Your Gallery</div>
+            <div class="chapter-card gallery-card">
+                <div class="chapter-icon">📸</div>
+                <h2 class="chapter-title" style="font-size: 1.5rem; line-height: 1.5;">woh images jo dur hone pr bhi mujhe tumhare pass rkhti h</h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-text" style="margin-bottom: 2rem;">
+                    Kuch pyare lamhe jo humne saath bitaye, ya jo mere dil ke sabse paas hain... ❤️
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="pic 1.png" alt="Memory 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item tape-double">
+                        <img src="pic 2.png" alt="Memory 2" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic 3.png" alt="Memory 3" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic 4.png" alt="Memory 4" loading="lazy">
+                    </div>
+                    <div class="gallery-item tape-double">
+                        <img src="pic 5.png" alt="Memory 5" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic 6.png" alt="Memory 6" loading="lazy">
+                    </div>
+                    <div class="gallery-item tape-double">
+                        <img src="pic 7.png" alt="Memory 7" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="story-footer">
+            <p>Made with ❤️ for the one who makes my heart beat faster</p>
+            <p class="footer-date">Since the day we met...</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
